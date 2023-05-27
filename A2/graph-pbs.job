@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N graph_generator
+#PBS -l select=1:ncpus=16
+#PBS -l walltime=00:30:00
+#PBS -o output.out
+#PBS -e error.err
+
+module purge
+module load apps/anaconda/3
+export NODES=`cat ${PBS_NODEFILE}|sort|uniq|tr '\n' ','|sed 's:,$::g'`
+
+echo "Nodes: ${NODES}"
+
+echo "==============================="
+echo $PBS_JOBID
+cat $PBS_NODEFILE
+echo "==============================="
+cd $PBS_O_WORKDIR
+echo $PBS_O_WORKDIR
+
+echo "Running the code"
+python3 generate.py 14 250000 250
+echo "done"

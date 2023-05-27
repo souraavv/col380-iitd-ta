@@ -1,0 +1,12 @@
+How to setup slurm for the a cluster of nodes
+- sudo apt install slurm-wlm 
+- update the configuration file
+- sudo apt install ntp
+- use ntp to sync the clocks, (ntp.iitd.ac.in)
+- start the ntp service
+- now restart the munge service
+- now again start the slurm service (make sure permission are set to /var/log/slurm
+- Most of the error are just because of not proper permission
+
+- To use slurm_adopt, install it using apt 
+- 
